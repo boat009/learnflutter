@@ -35,12 +35,12 @@
 
 ###    ตัวอย่าง Model C#:
 ####    csharp
-public class Contract {
-    public int Id { get; set; }
-    public string ContractNumber { get; set; }
-    public string CustomerName { get; set; }
-    public DateTime DueDate { get; set; }
-    public decimal OutstandingAmount { get; set; }
+        public class Contract {
+        public int Id { get; set; }
+        public string ContractNumber { get; set; }
+        public string CustomerName { get; set; }
+        public DateTime DueDate { get; set; }
+        public decimal OutstandingAmount { get; set; }
 }
 ##    บทที่ 3: แนวทางการเขียน Prompt อย่างไรให้ AI สร้างโค้ดดี
 ###    3.1 โครงสร้างการเขียน Prompt
@@ -53,8 +53,7 @@ public class Contract {
         Instruction	ช่วยสร้างหน้าจอ Login ที่มีการตรวจสอบข้อมูล และเมื่อสำเร็จ ให้เก็บ Token ลง Storage
         Example	ตัวอย่าง API: POST /api/auth/login
 ####    Prompt ที่ได้:
-        plaintext
-        คัดลอก แก้ไข
+####    plaintext
         Create a Flutter screen for user login with form validation. When the login is successful, call API endpoint '/api/auth/login' with email and password, then save the received JWT token using Flutter Secure Storage.
 ###    3.2 เทคนิคการเขียน Prompt ให้แม่น
         ชี้เฉพาะว่าใช้ภาษาอะไร (เช่น Flutter, C#, SQL)
@@ -65,8 +64,6 @@ public class Contract {
 ##    บทที่ 4: ตัวอย่างการเขียน Prompt เบื้องต้น
 ###    4.1 สร้าง Flutter Project
 ####    Prompt:
-        plaintext
-        คัดลอก แก้ไข
         Create a new Flutter project called "installment_collection_app" with the following packages:
         - provider
         - http
@@ -78,7 +75,6 @@ public class Contract {
 
 ##    4.2 สร้าง API Backend C#
 ###    Prompt:
-    plaintext คัดลอก    แก้ไข
         Create an ASP.NET Core Web API project named "InstallmentCollectionAPI". Add a ContractController with endpoints to:
         - Get all contracts
         - Get contract by ID
