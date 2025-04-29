@@ -115,109 +115,74 @@
               await storage.write(key: 'jwt_token', value: token);
         }
 #    บทที่ 6: การเขียน Prompt เพื่อสั่งให้ AI วาดหน้าจอ (UI)
-Prompt:
+###   Prompt:
+####    plaintext
+        Create a Flutter ListView that displays a list of contracts. Each contract shows Contract Number, Customer Name, and Due Date.
+####    อธิบาย:
+        บอกว่าใช้ Flutter
+        บอกว่าให้ใช้ Widget อะไร (ListView)
+        ระบุข้อมูลที่ต้องโชว์บน Card / List Item
 
-plaintext
-คัดลอก
-แก้ไข
-Create a Flutter ListView that displays a list of contracts. Each contract shows Contract Number, Customer Name, and Due Date.
-อธิบาย:
+####    ตัวอย่างโค้ดที่ได้:
+####    dart
+        ListView.builder(
+          itemCount: contracts.length,
+          itemBuilder: (context, index) {
+            final contract = contracts[index];
+            return ListTile(
+              title: Text(contract.contractNumber),
+              subtitle: Text(contract.customerName),
+              trailing: Text(contract.dueDate.toString()),
+            );
+          },
+        );
+#    บทที่ 7: วิธีตรวจสอบและปรับปรุง Prompt
+##    7.1 ถ้าโค้ดไม่ตรงกับที่คิด ต้อง
+###    เพิ่มรายละเอียดเพิ่มเติมใน Prompt ถามให้ AI ปรับแก้บางส่วน เจาะจงเทคนิค หรือ Library ที่ต้องการใช้งาน
 
-บอกว่าใช้ Flutter
+####    ตัวอย่าง:
+####    plaintext
+        Improve the previous LoginScreen by adding a loading spinner when calling API.
+#    บทที่ 8: การเขียน Prompt สำหรับ Database Design
+####    Prompt:
+####    plaintext
+        Design a SQL Server database for installment collection with the following tables:
+        - Users (id, email, passwordHash)
+        - Contracts (id, contractNumber, customerName, dueDate, outstandingAmount)
+        - Payments (id, contractId, paymentDate, amount)
+        Add relationships and indexes where appropriate.
+####    อธิบาย:
+        บอกชัดเจนว่าต้องการ Table อะไร
+        ให้ AI ช่วยออกแบบ Relationship
+        ได้ ER Diagram และ SQL Script ทันที
 
-บอกว่าให้ใช้ Widget อะไร (ListView)
+#    บทที่ 9: หลักการวัดคุณภาพของ Prompt ที่ดี
+##    9.1 Prompt ที่ดีต้อง
+        สั้น แต่ครบ
+        ชัดเจน
+        มี Context ครบถ้วน
+        มีตัวอย่างประกอบ (ถ้ามี)
+        เปิดโอกาสให้ AI สร้างเพิ่มได้ (Flexible)
 
-ระบุข้อมูลที่ต้องโชว์บน Card / List Item
+#    บทที่ 10: Workshop ท้าย Phase 1
+####    โจทย์:
+        เขียน Prompt สร้าง Flutter หน้า Login
+        เขียน Prompt สร้าง ASP.NET Core API สำหรับ Login
+        เขียน Prompt ออกแบบ Database Table สำหรับเก็บผู้ใช้งาน
 
-ตัวอย่างโค้ดที่ได้:
+####    ตัวอย่างคำตอบ:
+####    plaintext
+#####       Flutter:
+                Create a LoginScreen with email/password fields, validate input, and call /api/auth/login API. Save JWT token using flutter_secure_storage.
 
-dart
-คัดลอก
-แก้ไข
-ListView.builder(
-  itemCount: contracts.length,
-  itemBuilder: (context, index) {
-    final contract = contracts[index];
-    return ListTile(
-      title: Text(contract.contractNumber),
-      subtitle: Text(contract.customerName),
-      trailing: Text(contract.dueDate.toString()),
-    );
-  },
-);
-บทที่ 7: วิธีตรวจสอบและปรับปรุง Prompt
-7.1 ถ้าโค้ดไม่ตรงกับที่คิด ต้อง
-เพิ่มรายละเอียดเพิ่มเติมใน Prompt
+#####        C# API:
+                Create an AuthController with a POST /login endpoint that validates user credentials and returns a JWT token if successful.
 
-ถามให้ AI ปรับแก้บางส่วน
-
-เจาะจงเทคนิค หรือ Library ที่ต้องการใช้งาน
-
-ตัวอย่าง:
-
-plaintext
-คัดลอก
-แก้ไข
-Improve the previous LoginScreen by adding a loading spinner when calling API.
-บทที่ 8: การเขียน Prompt สำหรับ Database Design
-Prompt:
-
-plaintext
-คัดลอก
-แก้ไข
-Design a SQL Server database for installment collection with the following tables:
-- Users (id, email, passwordHash)
-- Contracts (id, contractNumber, customerName, dueDate, outstandingAmount)
-- Payments (id, contractId, paymentDate, amount)
-Add relationships and indexes where appropriate.
-อธิบาย:
-
-บอกชัดเจนว่าต้องการ Table อะไร
-
-ให้ AI ช่วยออกแบบ Relationship
-
-ได้ ER Diagram และ SQL Script ทันที
-
-บทที่ 9: หลักการวัดคุณภาพของ Prompt ที่ดี
-9.1 Prompt ที่ดีต้อง
-สั้น แต่ครบ
-
-ชัดเจน
-
-มี Context ครบถ้วน
-
-มีตัวอย่างประกอบ (ถ้ามี)
-
-เปิดโอกาสให้ AI สร้างเพิ่มได้ (Flexible)
-
-บทที่ 10: Workshop ท้าย Phase 1
-โจทย์:
-
-เขียน Prompt สร้าง Flutter หน้า Login
-
-เขียน Prompt สร้าง ASP.NET Core API สำหรับ Login
-
-เขียน Prompt ออกแบบ Database Table สำหรับเก็บผู้ใช้งาน
-
-ตัวอย่างคำตอบ:
-
-plaintext
-คัดลอก
-แก้ไข
-Flutter:
-Create a LoginScreen with email/password fields, validate input, and call /api/auth/login API. Save JWT token using flutter_secure_storage.
-
-C# API:
-Create an AuthController with a POST /login endpoint that validates user credentials and returns a JWT token if successful.
-
-SQL Server:
-Create a Users table with columns: id (PK), email (unique), passwordHash, createdAt.
-📌 สรุป Phase 1
-เข้าใจว่า Prompt คือเครื่องมือสื่อสารกับ AI
-
-เขียน Prompt อย่างเป็นระบบ
-
-สร้างทั้ง Frontend, Backend และ Database ด้วยการสั่งงาน AI
-
-ปูพื้นฐานให้พร้อมเริ่มลงมือสร้างโปรแกรมจริงใน Phase 2
+#####        SQL Server:
+                Create a Users table with columns: id (PK), email (unique), passwordHash, createdAt.
+#    📌 สรุป Phase 1
+        เข้าใจว่า Prompt คือเครื่องมือสื่อสารกับ AI
+        เขียน Prompt อย่างเป็นระบบ
+        สร้างทั้ง Frontend, Backend และ Database ด้วยการสั่งงาน AI
+        ปูพื้นฐานให้พร้อมเริ่มลงมือสร้างโปรแกรมจริงใน Phase 2
 
